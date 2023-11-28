@@ -1,0 +1,19 @@
+{
+  "name": "gherkinfy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "Gherking",
+    "Jest",
+    "Test",
+    "Unit",
+    "Integration",
+    "Typescript"
+  ],
+  "author": "Alessandro Traversi",
+  "license": "MIT"
+}
