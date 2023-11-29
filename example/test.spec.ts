@@ -9,7 +9,7 @@ const FILE_INFO = setFileInfo({
   file: "test.spec.ts",
 });
 
-const feature = "FEATURE: TEST";
+const feature = "TEST";
 
 describe(FILE_INFO, () => {
   let TEST_INFO;
@@ -20,6 +20,17 @@ describe(FILE_INFO, () => {
     given: "abc",
     when: "def",
     then: "zxy",
+  });
+  it(TEST_INFO, () => {
+    expect(true).toEqual(true);
+  });
+
+  TEST_INFO = setTestInfo({
+    feature,
+    scenario: "Scenario 2",
+    given: "1234",
+    when: "123",
+    then: ["zxy", "123"],
   });
   it(TEST_INFO, () => {
     expect(true).toEqual(true);

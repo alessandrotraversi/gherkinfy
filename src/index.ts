@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+
 // ENUMS
 export enum GherkingEnums {
   FEATURE = "FEATURE",
@@ -50,18 +52,26 @@ export const setFileInfo = (payload: TestSuiteAttributes): string => {
 export const setTestInfo = (payload: GherkingOptions): string => {
   const { feature, given, scenario, when, then } = payload;
 
+  function setThenVal(then: string | string[]): string | string[] {
+    const init = `${"\n"}          `;
+
+    if (typeof then === "string") {
+      return `${init}${GherkingEnums.THEN} ${then}`;
+    }
+
+    return then.map(
+      (then: string): string => `${init}${GherkingEnums.THEN} ${then}`,
+    );
+  }
+
   const FEATURE = `${GherkingEnums.FEATURE}: ${feature}`;
   const SCENARIO = `${GherkingEnums.SCENARIO}: ${scenario}`;
   const GIVEN = `${GherkingEnums.GIVEN} ${given}`;
   const WHEN = `${GherkingEnums.WHEN} ${when}`;
-  const THEN =
-    typeof then === "string"
-      ? `${GherkingEnums.THEN} ${then}`
-      : `${GherkingEnums.THEN} ${then[0]}`;
+  const THEN = setThenVal(then);
 
   return `${FEATURE}
-    ${SCENARIO}
-      ${GIVEN},
-      ${WHEN},
-      ${THEN}`;
+        ${SCENARIO}
+          ${GIVEN},
+          ${WHEN},${THEN}`;
 };
