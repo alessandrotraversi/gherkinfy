@@ -1,5 +1,5 @@
 // LIBS
-import { setFileInfo, setTestInfo } from "../src/index";
+import { setFileInfo, setTestInfo, _given, _then, _when } from "../src/index";
 
 // CONFIG
 const FILE_INFO = setFileInfo({
@@ -33,6 +33,27 @@ describe(FILE_INFO, () => {
     then: ["zxy", "123"],
   });
   it(TEST_INFO, () => {
+    expect(true).toEqual(true);
+  });
+
+  TEST_INFO = setTestInfo({
+    feature,
+    scenario: "Scenario 2",
+    given: "1234",
+    when: "123",
+    then: ["zxy", "123"],
+  });
+  it(TEST_INFO, () => {
+    let expected: boolean;
+
+    _given(() => {
+      expected = true;
+    });
+
+    _when(() => {
+      expected = true;
+    });
+
     expect(true).toEqual(true);
   });
 });

@@ -75,3 +75,8 @@ export const setTestInfo = (payload: GherkingOptions): string => {
           ${GIVEN},
           ${WHEN},${THEN}`;
 };
+
+export const _scenario = (callback: any): void => callback();
+export const _given = (callback: any): void => callback();
+export const _when = (callback: any): void => callback();
+export const _then = (callback: any): void => callback();
